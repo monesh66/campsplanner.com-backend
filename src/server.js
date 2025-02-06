@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+require('dotenv').config()
 
 // router import
 const userAuthRouter = require('./api/router/userAuthRouter')
@@ -19,13 +20,12 @@ server.use(cors({
 }));
 
 const DB_URL = "mongodb://127.0.0.1:27017/csp";
-
 //database connect
 const connectDB = async()=>{
     try{
         console.log("Connecting to MongoDB...");
         setTimeout(()=>{
-            mongoose.connect(DB_URL);
+            mongoose.connect(process.env.MONGODB);
             console.log("MongoDB Connection Success.");
         },1000);
     }
