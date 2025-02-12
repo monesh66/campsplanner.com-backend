@@ -15,7 +15,6 @@ const userLogin = async (req, res) => {
         console.log(`Request from IP:${req.ip}`);
         console.log(`Request from IP:${req.connection.remoteAddress}`);
         console.log(`Request from IP:${req.socket.remoteAddress}`);
-        console.log(`Request from IP:${req.connection.socket.remoteAddress}`);
 
         console.log(`Body:`);
         console.log(req.body);
