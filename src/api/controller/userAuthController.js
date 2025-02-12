@@ -13,6 +13,10 @@ const userLogin = async (req, res) => {
     try {
         const { loginType } = req.body;
         console.log(`Request from IP:${req.ip}`);
+        console.log(`Request from IP:${req.connection.remoteAddress}`);
+        console.log(`Request from IP:${req.socket.remoteAddress}`);
+        console.log(`Request from IP:${req.connection.socket.remoteAddress}`);
+
         console.log(`Body:`);
         console.log(req.body);
 
