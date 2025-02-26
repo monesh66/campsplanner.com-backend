@@ -19,27 +19,33 @@ server.use(cors({
     credentials: true
 }));
 
-const DB_URL = "mongodb://127.0.0.1:27017/csp";
+
 //database connect
-const connectDB = async()=>{
-    try{
+const connectDB = async () => {
+    try {
         console.log("Connecting to MongoDB...");
-        setTimeout(()=>{
+        setTimeout(() => {
             mongoose.connect(process.env.MONGODB);
             console.log("MongoDB Connection Success.");
-        },1000);
+        }, 1000);
     }
     catch (error) {
         console.log("MongoDB Connection Failed.");
-        console.log("Error: "+error);
+        console.log("Error: " + error);
     }
 }
 
 
 // api
+server.post("/api/server", (req, res) => {
+    res.send({
+        code: 1,
+        msg: "server is active now"
+    })
+})
 server.use("/api/v1/auth", userAuthRouter);
-server.get("/test", (req, res)=>{
-    console.log(`Request IP:${req.ip}`);    
+server.get("/test", (req, res) => {
+    console.log(`Request IP:${req.ip}`);
     res.send(`Project: Campus Schedule Planner ip:${req.ip}`);
 });
 
@@ -47,7 +53,7 @@ server.get("/test", (req, res)=>{
 
 
 //run server
-server.listen(8090, ()=>{
+server.listen(8090, () => {
     console.log("Express Server is Runing on Port 8090.");
     connectDB();
 })
