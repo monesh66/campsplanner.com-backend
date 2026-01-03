@@ -43,7 +43,7 @@ server.post("/api/server", (req, res) => {
         msg: "server is active now"
     })
 })
-server.use("/api/v1/auth", userAuthRouter);
+server.use("/api/v1/", userAuthRouter);
 server.get("/test", (req, res) => {
     console.log(`Request IP:${req.ip}`);
     res.send(`Project: Campus Schedule Planner ip:${req.ip}`);
